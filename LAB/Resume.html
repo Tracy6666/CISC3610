@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Resume</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+    /* Remove the navbar's default margin-bottom and rounded borders */ 
+    .navbar {
+        
+      margin-bottom: 0; 
+      border-radius: 0;
+    }
+    .navbar-custom .navbar-brand,
+    .navbar-custom .navbar-text {
+    color: rgba(228, 49, 49, 0.8);
+    }
+    .wrapper {
+  position: relative;
+  width: 960px;
+  padding: 10px;
+}
+section {
+  background: #7f7f7f;
+  color: #fff;
+}
+section:first-of-type {
+  display: block;
+}
+
+ul {
+  list-style: none;
+}
+ </style>
+</head>
+
+<nav class="navbar navbar-expand-sm navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="#">Portfolio</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav " >
+        <li data-rel="1" class="active " ><a href="#">Home</a></li>
+        <li data-rel="2"><a href="#">About</a></li>
+        <li data-rel="3"><a href="#">Contact</a></li>
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+<section>
+<div class="jumbotron">
+  <div class="container text-center">
+    <h1>Cuishan Chen</h1>      
+    <p>Chanchuishan1210@gmail.com</p>
+  </div>
+</div>
+<div class="container-fluid bg-3 text-center">    
+  <h3>Some of my Work</h3><br>
+  <div class="row">
+    <div class="col-sm-3">
+      <p>Some text..</p>
+      <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
+    </div>
+    <div class="col-sm-3"> 
+      <p>Some text..</p>
+      <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
+    </div>
+    <div class="col-sm-3"> 
+      <p>Some text..</p>
+      <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
+    </div>
+    <div class="col-sm-3">
+      <p>Some text..</p>
+      <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
+    </div>
+  </div>
+</div>
+</section>
+
+<section>
+    <article>
+      <h4>Section 2</h4>
+    </article>
+  </section>
+
+  <section>
+    <article>
+      <h4>Section 3</h4>
+    </article>
+  </section>
+<body>
+  <script>
+    (function($) {
+      $('nav li').click(function() {
+        $(this).addClass('active').siblings('li').removeClass('active');
+        $('section:nth-of-type('+$(this).data('rel')+')').stop().fadeIn(400, 'linear').siblings('section').stop().fadeOut(400, 'linear'); 
+      });
+    })(jQuery);
+  </script>
+</body>
+</html>
