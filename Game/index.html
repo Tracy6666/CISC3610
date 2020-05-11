@@ -20,7 +20,7 @@ var config = {
     width: 800,
     height: 650,
     physics: {
-        default: 'arcade',
+       default: 'arcade',
         arcade: {
             gravity: { y: 300 },
             debug: false
@@ -43,7 +43,7 @@ var gameOver = false;
 var scoreText;
 var HP = 3;
 var hpText;
-var starsNum = 12;
+var keyN;
 var game = new Phaser.Game(config);
 
 function preload ()
@@ -59,10 +59,12 @@ function preload ()
     this.load.spritesheet('dude', 'assets/dude.png', { frameWidth: 32, frameHeight: 48 });
 }
 
+
 function create ()
 {
     //  A simple background for our game
     this.add.image(110, 300, 'bg').setScale(0.3);
+   // keyN = game.input.keyboard.addKey(Phaser.Keyboard.ONE);
 
     //  The platforms group contains the ground and the 2 ledges we can jump on
     platforms = this.physics.add.staticGroup();
@@ -109,6 +111,7 @@ function create ()
     //  Input Events
     cursors = this.input.keyboard.createCursorKeys();
 
+ 
     //  Some stars to collect, 12 in total, evenly spaced 70 pixels apart along the x axis
     stars = this.physics.add.group({
         key: 'star',
@@ -139,16 +142,21 @@ function create ()
     this.physics.add.overlap(player, stars, collectStar, null, this);
 
     this.physics.add.collider(player, bombs, hitBomb, null, this);
+    
+    //this.keyN = this.input.keyboard.addKey(Phaser.Keyboard.N);
+    //keyN.onDown.add(restart, this);
 }
-
 
 function update ()
 {
     if (gameOver)
     {
-      var image = this.add.image(400, 300, 'restart');
+      this.add.image(400, 300, 'restart');
+
+      //restart();
+     // game.restart();
        /*var image = new image(50,50);
-       image.src="assets/restart.png";*/
+       image.src="assets/restart.png";
        image.onclick=function (){
 
            this.scene.restart();
@@ -156,11 +164,13 @@ function update ()
            //this.game.state.restart();
         }
        // this.game.state.restart();
-       
+       */
         
         return;
     }
-
+   /* if(keyN.isDown){
+        restart();
+    }*/
     if (cursors.left.isDown)
     {
         player.setVelocityX(-160);
@@ -184,6 +194,7 @@ function update ()
     {
         player.setVelocityY(-330);
     }
+
 }
 
 function collectStar (player, star)
@@ -215,6 +226,7 @@ function collectStar (player, star)
 }
 
 function hitBomb (player, bomb)
+
 {
    
     if(HP>0){
@@ -227,13 +239,13 @@ function hitBomb (player, bomb)
    
     player.setTint(0xff0000);
 
-    player.anims.play('turn');
-
     gameOver = true;
     
     } 
 }
-
+function restart(){
+    this.restart();
+}
 </script>
 
 </body>
