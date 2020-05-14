@@ -64,8 +64,8 @@ function create ()
 {
     //  A simple background for our game
     this.add.image(110, 300, 'bg').setScale(0.3);
-   // keyN = game.input.keyboard.addKey(Phaser.Keyboard.ONE);
-
+    keyN = this.input.keyboard.addKey('N');
+    
     //  The platforms group contains the ground and the 2 ledges we can jump on
     platforms = this.physics.add.staticGroup();
 
@@ -142,9 +142,7 @@ function create ()
     this.physics.add.overlap(player, stars, collectStar, null, this);
 
     this.physics.add.collider(player, bombs, hitBomb, null, this);
-    
-    //this.keyN = this.input.keyboard.addKey(Phaser.Keyboard.N);
-    //keyN.onDown.add(restart, this);
+
 }
 
 function update ()
@@ -168,9 +166,9 @@ function update ()
         
         return;
     }
-   /* if(keyN.isDown){
-        restart();
-    }*/
+    if(keyN.isDown){
+        this.game.restart();
+    }
     if (cursors.left.isDown)
     {
         player.setVelocityX(-160);
@@ -243,9 +241,7 @@ function hitBomb (player, bomb)
     
     } 
 }
-function restart(){
-    this.restart();
-}
+
 </script>
 
 </body>
